@@ -1,0 +1,3 @@
+[submodule "src/external_dependencies/kuka_experimental"]
+	path = src/external_dependencies/kuka_experimental
+	url = https://github.com/b-robotized-forks/kuka_experimental.git
