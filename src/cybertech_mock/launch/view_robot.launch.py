@@ -27,7 +27,11 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("cybertech_mock"), "description", "kuka_cybertech.xacro"]
+                [
+                    FindPackageShare("cybertech_mock"),
+                    "description",
+                    "kuka_cybertech.urdf.xacro",
+                ]
             ),
         ]
     )
