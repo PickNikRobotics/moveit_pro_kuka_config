@@ -30,6 +30,7 @@ hardware:
       - robot_name: "kuka_cybertech"
       - description_package: "kuka_kr16_support"
       - description_macro_file: "kr16_2_macro.xacro"
+      - use_mock_hardware: "false"
       - use_rsi_communication: "true"
       - rsi_listen_ip: "127.0.0.1"
       - rsi_listen_port: "49152"
