@@ -41,11 +41,7 @@ hardware:
     # Many of these are specific to the descriptions packages, and can be customized as needed.
     # [Optional]
     urdf_params:
-      # If you'd like to use a different CYBERTECH model, enter it here!
-      - robot_name: "kuka_cybertech"
-      - description_package: "kuka_kr16_support"
-      - description_macro_file: "kr16_2_macro.xacro"
-      - use_mock_hardware: "true"
+      - mode: "mock"
 
 # Sets ROS global params for launch.
 # [Optional]

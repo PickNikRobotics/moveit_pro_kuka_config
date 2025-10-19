@@ -1,15 +1,35 @@
 <?xml version="1.0"?>
 <robot name="kuka_cybertech" xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:include filename="$(find kuka_ros2_control_support)/urdf/common_kuka.xacro" />
+  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr16_r2010_2_macro.xacro" />
+  <xacro:include
+    filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control_macro.xacro" />
 
-  <link name="world" />
+  <xacro:arg name="driver_version" default="rsi_only" />
+  <xacro:arg name="mode" default="mock" />
+  <xacro:arg name="use_gpio" default="false" />
+  <xacro:arg name="roundtrip_time" default="0" />
+  <xacro:arg name="client_ip" default="0.0.0.0" />
+  <xacro:arg name="client_port" default="59152" />
+  <xacro:arg name="controller_ip" default="0.0.0.0" />
+  <xacro:arg name="verify_robot_model" default="false" />
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="x" default="0" />
+  <xacro:arg name="y" default="0" />
+  <xacro:arg name="z" default="0" />
+  <xacro:arg name="roll" default="0" />
+  <xacro:arg name="pitch" default="0" />
+  <xacro:arg name="yaw" default="0" />
 
-  <joint name="world-base_link" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="world" />
-    <child link="base_link" />
-  </joint>
+  <xacro:kuka_cybertech_ros2_control name="$(arg prefix)kr16_r2010_2"
+    driver_version="$(arg driver_version)" client_ip="$(arg client_ip)"
+    client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)"
+    mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)"
+    verify_robot_model="$(arg verify_robot_model)" />
+
+  <xacro:kuka_kr16_r2010_2_robot prefix="$(arg prefix)" package_name="kuka_cybertech_support">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)" />
+  </xacro:kuka_kr16_r2010_2_robot>
 
   <link name="grasp_link" />
 

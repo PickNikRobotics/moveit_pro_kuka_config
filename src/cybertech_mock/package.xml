@@ -14,7 +14,8 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>kuka_experimental</depend>
+  <depend>kuka_cybertech_support</depend>
+  <depend>kuka_mock_hardware_interface</depend>
 
   <exec_depend>moveit_studio_agent</exec_depend>
   <exec_depend>moveit_studio_behavior</exec_depend>
