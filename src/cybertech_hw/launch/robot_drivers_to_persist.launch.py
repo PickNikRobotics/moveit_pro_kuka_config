@@ -37,6 +37,7 @@ def generate_launch_description():
     # Get MoveIt Pro system configuration
     system_config_parser = SystemConfigParser()
     hardware_config = system_config_parser.get_hardware_config()
+    robot_description = system_config_parser.get_processed_urdf()
 
     # Extract and parse URDF parameters from MoveIt Pro config
     urdf_params = hardware_config.robot_description.urdf_params
@@ -58,8 +59,8 @@ def generate_launch_description():
     # Load controller configuration
     # TODO: RSI-only for now; extend to EKI+RSI later via driver_version
     controller_config = (
-        get_package_share_directory("kuka_rsi_driver")
-        + "/config/ros2_controller_config_rsi_only.yaml"
+        get_package_share_directory("cybertech_hw")
+        + "/config/control/ros2_control.yaml"
     )
 
     # Load driver-specific configuration
@@ -76,6 +77,7 @@ def generate_launch_description():
         parameters=[
             controller_config,
             {
+                "robot_description": robot_description,
                 "hardware_components_initial_state": {"unconfigured": [robot_model]},
             },
         ],

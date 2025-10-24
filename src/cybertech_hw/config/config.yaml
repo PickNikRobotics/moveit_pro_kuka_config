@@ -12,11 +12,11 @@ hardware:
   # This allows users to switch between mock and real hardware by changing a single parameter with config inheritance.
   # [Required]
   simulated: false
-  
+
   # If the MoveIt Pro Agent should launch the ros2 controller node.
   # [Optional, default=True]
   launch_control_node: False
-  
+
   # If simulated is false, launch the following file:
   # [Optional, defaults to a blank launch file if not specified]
   robot_driver_persist_launch_file:
@@ -36,6 +36,7 @@ hardware:
       - use_gpio: "false"
       - client_ip: "0.0.0.0"
       - client_port: "59152"
+      - controller_ip: "127.0.0.1"
 
 # Sets ROS global params for launch.
 # [Optional]
@@ -54,12 +55,15 @@ ros2_control:
   # If not specified, it is up to the user to ensure the appropriate controllers are active and available
   # for running the application.
   # [Optional, default=[]]
-  controllers_active_at_startup:
-    - "joint_state_broadcaster"
-    - "joint_trajectory_controller"
+  controllers_active_at_startup: []
   # Load but do not start these controllers so they can be activated later if needed.
   # [Optional, default=[]]
   controllers_inactive_at_startup:
+    - "joint_state_broadcaster"
+    - "joint_trajectory_controller"
+  # Any controllers here will not be spawned by MoveIt Pro.
+  # [Optional, default=[]]
+  controllers_not_managed:
     - "velocity_force_controller"
     - "servo_controller"
 # Configuration for loading behaviors and objectives.
