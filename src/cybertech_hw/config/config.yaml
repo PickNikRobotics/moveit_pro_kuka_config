@@ -12,11 +12,16 @@ hardware:
   # This allows users to switch between mock and real hardware by changing a single parameter with config inheritance.
   # [Required]
   simulated: false
+  
+  # If the MoveIt Pro Agent should launch the ros2 controller node.
+  # [Optional, default=True]
+  launch_control_node: False
+  
   # If simulated is false, launch the following file:
   # [Optional, defaults to a blank launch file if not specified]
   robot_driver_persist_launch_file:
-    package: "moveit_studio_agent"
-    path: "launch/blank.launch.py"
+    package: "cybertech_hw"
+    path: "launch/robot_drivers_to_persist.launch.py"
 
   # Parameters used to configure the robot description through XACRO.
   # A URDF and SRDF are both required.
@@ -26,14 +31,11 @@ hardware:
     # Many of these are specific to the descriptions packages, and can be customized as needed.
     # [Optional]
     urdf_params:
-      # If you'd like to use a different CYBERTECH model, enter it here!
-      - robot_name: "kuka_cybertech"
-      - description_package: "kuka_kr16_support"
-      - description_macro_file: "kr16_2_macro.xacro"
-      - use_mock_hardware: "false"
-      - use_rsi_communication: "true"
-      - rsi_listen_ip: "127.0.0.1"
-      - rsi_listen_port: "49152"
+      - mode: "hardware"
+      - driver_version: "rsi_only"
+      - use_gpio: "false"
+      - client_ip: "0.0.0.0"
+      - client_port: "59152"
 
 # Sets ROS global params for launch.
 # [Optional]

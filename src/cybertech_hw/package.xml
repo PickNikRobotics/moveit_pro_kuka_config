@@ -15,7 +15,7 @@
 
   <depend>cybertech_mock</depend>
   
-  <depend>kuka_experimental</depend>
+  <depend>kuka_rsi_driver</depend>
 
   <exec_depend>moveit_studio_agent</exec_depend>
   <exec_depend>moveit_studio_behavior</exec_depend>
